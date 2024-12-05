@@ -91,9 +91,7 @@ def create_tables():
             PRIMARY KEY (PatientID, MedicationID),
             FOREIGN KEY (PatientID) REFERENCES Patients(PatientID),
             FOREIGN KEY (MedicationID) REFERENCES Medications(MedicationID)
-);
-
-
+        );
         """,
     ]
 
@@ -111,4 +109,3 @@ def create_tables():
 
 if __name__ == "__main__":
     create_tables()
-
