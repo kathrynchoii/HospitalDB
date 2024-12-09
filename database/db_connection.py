@@ -10,13 +10,13 @@ load_dotenv()
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_HOST = os.getenv("DB_HOST")
-DB_PORT = int(os.getenv("DB_PORT", 3306))  # Default to 3306 if not set
+DB_PORT = int(os.getenv("DB_PORT", 3306))
 DB_NAME = os.getenv("DB_NAME")
 
 
 # Function to connect to the MariaDB database
 def connect_to_db():
-    print("Attempting to connect to the database...")  # Debug print
+    print("Attempting to connect to the database...")
     try:
         conn = mariadb.connect(
             user=DB_USER,
@@ -42,9 +42,9 @@ def get_cursor():
 def close_connection(conn, cur=None):
     """Close the cursor and the connection."""
     try:
-        if cur:  # Only attempt to close the cursor if it exists
+        if cur:
             cur.close()
-        if conn:  # Ensure the connection is closed
+        if conn:
             conn.close()
             print("Connection closed.")
     except Exception as e:
@@ -54,4 +54,3 @@ def close_connection(conn, cur=None):
 # Main script to test the connection
 if __name__ == "__main__":
     get_cursor()
-
