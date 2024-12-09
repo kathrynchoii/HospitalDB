@@ -2,8 +2,6 @@ from database.crud_operations import insert_data
 from database.db_connection import get_cursor, close_connection
 
 
-
-
 def populate_healthcare_professionals(conn):
     """Insert dummy data into HealthCareProfessionals table."""
     data = [
@@ -115,12 +113,48 @@ def populate_insurance(conn):
 def populate_visits(conn):
     """Insert dummy data into Visits table."""
     data = [
-        ('00000001', '2023-11-15', '00000001', 'Routine Check-up', 'Patient in good health. Scheduled for next visit in 6 months.'),
-        ('00000002', '2023-06-20', '00000002', 'Follow-up', 'Discussed test results and adjusted medication.'),
-        ('00000001', '2022-10-10', '00000003', 'Consultation', 'Referred to cardiologist for further evaluation.'),
-        ('00000003', '2023-01-05', '00000004', 'Emergency Visit', 'Patient presented with severe abdominal pain. Treated and discharged.'),
-        ('00000004', '2021-12-30', '00000005', 'Surgery Follow-up', 'Post-operative check-up. Healing progressing well.'),
-        ('00000005', '2020-01-01', '00000001', 'Initial Visit', 'New patient intake and preliminary health assessment.'),
+        (
+            "00000001",
+            "2023-11-15",
+            "00000001",
+            "Routine Check-up",
+            "Patient in good health. Scheduled for next visit in 6 months.",
+        ),
+        (
+            "00000002",
+            "2023-06-20",
+            "00000002",
+            "Follow-up",
+            "Discussed test results and adjusted medication.",
+        ),
+        (
+            "00000001",
+            "2022-10-10",
+            "00000003",
+            "Consultation",
+            "Referred to cardiologist for further evaluation.",
+        ),
+        (
+            "00000003",
+            "2023-01-05",
+            "00000004",
+            "Emergency Visit",
+            "Patient presented with severe abdominal pain. Treated and discharged.",
+        ),
+        (
+            "00000004",
+            "2021-12-30",
+            "00000005",
+            "Surgery Follow-up",
+            "Post-operative check-up. Healing progressing well.",
+        ),
+        (
+            "00000005",
+            "2020-01-01",
+            "00000001",
+            "Initial Visit",
+            "New patient intake and preliminary health assessment.",
+        ),
     ]
     query = """
     INSERT INTO Visits (PatientID, VisitDate, HCPID, Reason, Notes)
@@ -133,11 +167,11 @@ def populate_visits(conn):
 def populate_patient_insurance(conn):
     """Insert dummy data into PatientInsurance table."""
     data = [
-        ('00000001', '00000001', '2023-01-01', '2024-01-01'),
-        ('00000001', '00000002', '2023-02-01', '2023-12-31'),
-        ('00000002', '00000003', '2023-03-01', None),
-        ('00000003', '00000001', '2022-01-01', '2022-12-31'),
-        ('00000003', '00000005', '2023-04-01', '2024-03-31'),
+        ("00000001", "00000001", "2023-01-01", "2024-01-01"),
+        ("00000001", "00000002", "2023-02-01", "2023-12-31"),
+        ("00000002", "00000003", "2023-03-01", None),
+        ("00000003", "00000001", "2022-01-01", "2022-12-31"),
+        ("00000003", "00000005", "2023-04-01", "2024-03-31"),
     ]
     query = """
     INSERT INTO PatientInsurance (PatientID, InsuranceID, CoverageStartDate, CoverageEndDate)
@@ -190,13 +224,13 @@ def populate_hcp_departments(conn):
 def populate_patient_medications(conn):
     """Insert dummy data into PatientMedications table."""
     data = [
-        ('00000001', '00000001', '2023-01-01', '2023-06-01', '500mg'),
-        ('00000001', '00000003', '2023-02-01', '2023-07-01', '500mg'),
-        ('00000002', '00000002', '2023-03-01', '2023-08-01', '350mg'),
-        ('00000002', '00000004', '2023-04-01', '2023-09-01', '250mg'),
-        ('00000003', '00000005', '2023-05-01', '2023-10-01', '100mg'),
-        ('00000004', '00000003', '2023-06-01', '2023-11-01', '60mg'),
-        ('00000005', '00000001', '2023-07-01', '2023-12-01', '50mg'),
+        ("00000001", "00000001", "2023-01-01", "2023-06-01", "500mg"),
+        ("00000001", "00000003", "2023-02-01", "2023-07-01", "500mg"),
+        ("00000002", "00000002", "2023-03-01", "2023-08-01", "350mg"),
+        ("00000002", "00000004", "2023-04-01", "2023-09-01", "250mg"),
+        ("00000003", "00000005", "2023-05-01", "2023-10-01", "100mg"),
+        ("00000004", "00000003", "2023-06-01", "2023-11-01", "60mg"),
+        ("00000005", "00000001", "2023-07-01", "2023-12-01", "50mg"),
     ]
     query = """
     INSERT INTO PatientMedications (PatientID, MedicationID, StartDate, EndDate, Dosage)
@@ -206,10 +240,9 @@ def populate_patient_medications(conn):
         insert_data(conn, query, record)
 
 
-
 def populate_all_tables():
     """Populate all tables with dummy data."""
-    conn = get_cursor()[1]  # Get the database connection
+    conn = get_cursor()[1]
     try:
         # populate_healthcare_professionals(conn)
         # populate_patients(conn)

@@ -14,7 +14,7 @@ DB_PORT = int(os.getenv("DB_PORT", 3306))
 DB_NAME = os.getenv("DB_NAME")
 
 
-# Function to connect to the MariaDB database
+# Connect to the MariaDB database
 def connect_to_db():
     print("Attempting to connect to the database...")
     try:
@@ -51,6 +51,5 @@ def close_connection(conn, cur=None):
         print(f"Error closing connection: {e}")
 
 
-# Main script to test the connection
 if __name__ == "__main__":
     get_cursor()

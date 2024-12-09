@@ -13,7 +13,7 @@ def execute_query(conn, query, values):
     try:
         cur = conn.cursor()
         cur.execute(query, values)
-        conn.commit()  # Save the changes to the database
+        conn.commit() 
         print("Query executed successfully.")
     except Exception as e:
         print(f"Error executing query: {e}")
@@ -27,7 +27,7 @@ def insert_data(conn, query, values):
     try:
         cur = conn.cursor()
         cur.execute(query, values)
-        conn.commit()  # Save the changes to the database
+        conn.commit() 
         print("Data inserted successfully.")
     except Exception as e:
         print(f"Error inserting data: {e}")
@@ -44,7 +44,7 @@ def fetch_data(conn, query, values=None):
             cur.execute(query, values)
         else:
             cur.execute(query)
-        rows = cur.fetchall()  # Fetch all results
+        rows = cur.fetchall()  
         return rows
     except Exception as e:
         print(f"Error fetching data: {e}")
@@ -59,7 +59,7 @@ def update_data(conn, query, values):
     try:
         cur = conn.cursor()
         cur.execute(query, values)
-        conn.commit()  # Save the changes to the database
+        conn.commit() 
         print("Data updated successfully.")
     except Exception as e:
         print(f"Error updating data: {e}")
@@ -91,13 +91,13 @@ def list_all_healthcare_professionals(conn):
 # Example: Update a healthcare professional's contact number
 def update_healthcare_professional_contact(conn):
     query = "UPDATE HealthCareProfessionals SET ContactNumber = ? WHERE HCPID = ?"
-    values = ("212-555-7890", "00000002")  # Updating Laura Taylor's contact number
+    values = ("212-555-7890", "00000002") 
     execute_query(conn, query, values)
 
 
 # Example function to test CRUD operations
 def test_crud_operations():
-    conn = get_cursor()[1]  # Get the database connection
+    conn = get_cursor()[1] 
     try:
         # Add a healthcare professional
         add_healthcare_professional(conn)
@@ -109,7 +109,7 @@ def test_crud_operations():
         # Update a healthcare professional's contact number
         update_healthcare_professional_contact(conn)
     finally:
-        close_connection(conn)  # Pass only the connection here
+        close_connection(conn) 
 
 
 if __name__ == "__main__":
